@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+</head>
+<body>
+    <h1>Productos</h1>
+    <form action="/crear", method="POST">
+        <input type="text" name="nombre" placeholder="Nombre" required>
+        <input type="number" name="precio" placeholder="Precio" required>
+        <input type="submit" value="Crear">
+    </form>
+        <!-- agregamos la ruta para la edicion -->
+        {% for producto in productos %}
+            <li>{{ producto.nombre }}: ${{ producto.precio }}
+            <a href="/editar/{{ producto.nombre }}/{{producto.precio}}">Editar</a>
+            <a href="/eliminar/{{ producto['nombre'] }}" onclick="return confirm('Seguro que deseas eliminar?')">Eliminar</a>
+            </li>
+        {% endfor %}
+</body>
+</html>
